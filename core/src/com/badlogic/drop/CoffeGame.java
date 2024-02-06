@@ -109,7 +109,11 @@ public class CoffeGame extends ApplicationAdapter {
 
         if (gameWon) {
             batch.begin();
-            batch.draw(coffeeTexture, victoryBounds.x, victoryBounds.y);
+            batch.draw(coffeeTexture, coffeeBounds.x, coffeeBounds.y);
+            batch.draw(milkTexture, milkBounds.x, milkBounds.y);
+            batch.draw(sugarTexture, sugarBounds.x, sugarBounds.y);
+            batch.draw(randomCoffeeTexture, randomCoffeeBounds.x, randomCoffeeBounds.y);
+
             if (coffeeAnimating) {
                 coffeeAlpha -= Gdx.graphics.getDeltaTime() * animSpeed;
                 coffeeOffsetY += Gdx.graphics.getDeltaTime() * animSpeed * 100;
