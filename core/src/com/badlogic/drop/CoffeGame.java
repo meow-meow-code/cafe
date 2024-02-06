@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+
 import java.util.Random;
 //импорт необходимых библиотек
 
@@ -85,6 +86,9 @@ public class CoffeGame extends ApplicationAdapter {
         Texture victoryScreenTexture = new Texture(Gdx.files.internal("victory_screen.jpg"));
         victoryTexture = new TextureRegion(victoryScreenTexture, 0, 0, WIDTH, HEIGHT);
         victoryBounds = new Rectangle(0, 0, WIDTH, HEIGHT);
+
+        Random random = new Random();
+        randomCoffeeType = random.nextInt(2) + 1;
     }
 
     @Override
