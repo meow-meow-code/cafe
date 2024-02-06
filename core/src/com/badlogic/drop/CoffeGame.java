@@ -89,6 +89,14 @@ public class CoffeGame extends ApplicationAdapter {
 
         Random random = new Random();
         randomCoffeeType = random.nextInt(2) + 1;
+
+        if (randomCoffeeType == 1){
+            randomCoffeeTexture = coffeeTexture;
+            randomCoffeeBounds = coffeeBounds;
+        } else if (randomCoffeeType == 2){
+            randomCoffeeTexture = milkTexture;
+            randomCoffeeBounds = milkBounds;
+        }
     }
 
     @Override
@@ -99,10 +107,9 @@ public class CoffeGame extends ApplicationAdapter {
         camera.update();
         batch.setProjectionMatrix(camera.combined);
 
+        if (gameWon) {
             batch.begin();
-
-
-
+            batch.draw(coffeeTexture, victoryBounds.x, victoryBounds.y);
             if (coffeeAnimating) {
                 coffeeAlpha -= Gdx.graphics.getDeltaTime() * animSpeed;
                 coffeeOffsetY += Gdx.graphics.getDeltaTime() * animSpeed * 100;
@@ -138,15 +145,15 @@ public class CoffeGame extends ApplicationAdapter {
 
             batch.setColor(1f, 1f, 1f, sugarAlpha);
             batch.draw(sugarTexture, sugarBounds.x, sugarBounds.y + sugarOffsetY, sugarBounds.width, sugarBounds.height);
-            batch.setColor(1,1,1,1);
-            if (gameWon){
+            batch.setColor(1, 1, 1, 1);
+            if (gameWon) {
                 batch.draw(victoryTexture, victoryBounds.x, victoryBounds.y);
             }
             batch.end();
 
-
-        handleInput();
-        update();
+            handleInput();
+            update();
+        }
     }
 
     private void handleInput() {
