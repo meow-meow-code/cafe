@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
-
 import java.util.Random;
 //импорт необходимых библиотек
 
@@ -54,7 +53,7 @@ public class CoffeGame extends ApplicationAdapter {
     private boolean hasRandomCoffee;
     private int randomCoffeeType;
     // 1 - капучино, 2 - латте
-    private TextureRegion randomCoffeeTexture;
+    private Texture randomCoffeeTexture;
     private Rectangle randomCoffeeBounds;
 
     @Override
@@ -64,8 +63,7 @@ public class CoffeGame extends ApplicationAdapter {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, WIDTH, HEIGHT);
 
-        Texture randomCoffeeSheet = new Texture(Gdx.files.internal("random_coffee1_sheet.png"));
-        randomCoffeeTexture = new TextureRegion(randomCoffeeSheet, 0, 0, 64, 64);
+        randomCoffeeTexture = new Texture(Gdx.files.internal("random_coffee1_sheet.png"));
         randomCoffeeBounds = new Rectangle(400, 100, 64, 64);
 
         coffeeTexture = new Texture(Gdx.files.internal("coffee_sheet.png"));
@@ -157,6 +155,9 @@ public class CoffeGame extends ApplicationAdapter {
 
             handleInput();
             update();
+            if (gameWon){
+
+            }
         }
     }
 
