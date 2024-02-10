@@ -1,14 +1,15 @@
 package com.badlogic.drop;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontDenerator;
 
 public class EndgameScreen implements Screen {
 
@@ -18,7 +19,10 @@ public class EndgameScreen implements Screen {
     private static final int WIDTH = 800;
     private static final int HEIGHT = 480;
     private SpriteBatch batch;
-    private Font font;
+    private BitmapFont font;
+
+    private FreeTypeFontGenerator fontGenerator;
+    private FreeTypeFontGenerator.FreeTypeFontParametr fontParametr;
 
     private int moneyCount;
 
@@ -29,8 +33,9 @@ public class EndgameScreen implements Screen {
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, WIDTH, HEIGHT);
-        batch = new SpriteBatch();
-        font = new Font("font.otf", 16, 16);
+
+        fontGenerator = new FreeTypeFontGenerator
+
     }
 
     @Override
@@ -45,7 +50,7 @@ public class EndgameScreen implements Screen {
         batch.begin();
         camera.update();
         batch.setProjectionMatrix(camera.combined);
-        font.drawText(batch, "You earned: "+ moneyCount + "$", 350, 250);
+        font.draw(batch, "You earned: "+ moneyCount + "$", 350, 250);
         batch.end();
     }
 
@@ -71,7 +76,8 @@ public class EndgameScreen implements Screen {
 
     @Override
     public void dispose() {
-        batch.dispose();
+        fontGenerator.dispose();
         font.dispose();
+        batch.dispose();
     }
 }

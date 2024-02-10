@@ -89,7 +89,7 @@ public class GameScreen implements Screen {
         create();
         createMenuMap();
         orderText = getRandomOrderText();
-        secondsLeft = 2;
+        secondsLeft = 60;
         moneyCount = 0;
         currentCoffee = new CoffeeRecipe(0,0,0);
     }
