@@ -24,5 +24,15 @@ public class Font {
             }
         }
     }
-    public void drawText
+    public void drawText(SpriteBatch batch, String text, float x, float y){
+        for (int i = 0; i < text.length(); i++){
+            char c = text.charAt(i);
+            if (c >= 32 && c <= 127){
+                batch.draw(fontRegion[c - 32], x + i * charWidth, y);
+            }
+        }
+    }
+    public void dispose(){
+        fontTexture.dispose();
+    }
 }
