@@ -44,7 +44,7 @@ public class EndgameScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         camera.update();
         batch.setProjectionMatrix(camera.combined);
-        font.draw(batch, "You earned: "+ moneyCount + "$", 350, 210);
+        font.draw(batch, "You earned: "+ moneyCount + "$", 350, 250);
         batch.end();
     }
 

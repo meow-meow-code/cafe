@@ -122,7 +122,7 @@ public class GameScreen implements Screen {
         milkBounds = new Rectangle(350, 200, 64, 64);
 
         sugarTexture = new Texture(Gdx.files.internal("sugar_sheet.png"));
-        sugarBounds = new Rectangle(550, 200, 64, 64);
+        sugarBounds = new Rectangle(560, 200, 64, 64);
 
         sellButtonBounds = new Rectangle(500, 1, 200, 200);
         sellButtonTexture = new Texture(Gdx.files.internal("sell_button.png"));
@@ -164,8 +164,8 @@ public class GameScreen implements Screen {
         BitmapFont font = new BitmapFont();
         font.setColor(Color.BLACK);
         font.getData().setScale(2);
-        font.draw(batch, orderText, 20,Gdx.graphics.getHeight() - 20);
-        font.draw(batch, (int)secondsLeft + "", Gdx.graphics.getWidth() - 20, Gdx.graphics.getHeight() - 20);
+        font.draw(batch, orderText, 150,425);
+        font.draw(batch, (int)secondsLeft + "", 580, 425);
         font.draw(batch, moneyCount + "$", 160,120);
 
         //batch.draw(randomCoffeeTexture, randomCoffeeBounds.x, randomCoffeeBounds.y);
