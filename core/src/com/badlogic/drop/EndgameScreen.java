@@ -1,6 +1,7 @@
 package com.badlogic.drop;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
@@ -16,8 +17,8 @@ public class EndgameScreen implements Screen {
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 480;
-    SpriteBatch batch;
-    BitmapFont font;
+    private SpriteBatch batch;
+    private Font font;
 
     private int moneyCount;
 
@@ -28,8 +29,8 @@ public class EndgameScreen implements Screen {
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, WIDTH, HEIGHT);
-        font = new BitmapFont();
-        font.setColor(Color.BLACK);
+        batch = new SpriteBatch();
+        font = new Font("font.png", 16, 16);
     }
 
     @Override
@@ -39,12 +40,12 @@ public class EndgameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        batch.begin();
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        batch.begin();
         camera.update();
         batch.setProjectionMatrix(camera.combined);
-        font.draw(batch, "You earned: "+ moneyCount + "$", 350, 250);
+        font.drawText(batch, "You earned: "+ moneyCount + "$", 350, 250);
         batch.end();
     }
 
@@ -70,6 +71,7 @@ public class EndgameScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        batch.dispose();
+        font.dispose();
     }
 }
