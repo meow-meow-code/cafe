@@ -30,7 +30,7 @@ public class EndgameScreen implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, WIDTH, HEIGHT);
         batch = new SpriteBatch();
-        font = new Font("font.png", 16, 16);
+        font = new Font("font.otf", 16, 16);
     }
 
     @Override
