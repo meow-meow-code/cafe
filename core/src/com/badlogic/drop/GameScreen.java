@@ -53,6 +53,10 @@ public class GameScreen implements Screen {
     private boolean gameWon;
     private TextureRegion victoryTexture;
     private Rectangle victoryBounds;
+
+    private Texture reseptTexture;
+    private Rectangle reseptBounds;
+
     private float coffeeAlpha = 1f;
     private float milkAlpha = 1f;
     private float sugarAlpha = 1f;
