@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontDenerator;
+import com.badlogic.gdx.graphics.g2d.freetype.*;
 
 public class EndgameScreen implements Screen {
 
@@ -22,7 +22,7 @@ public class EndgameScreen implements Screen {
     private BitmapFont font;
 
     private FreeTypeFontGenerator fontGenerator;
-    private FreeTypeFontGenerator.FreeTypeFontParametr fontParametr;
+    private FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
 
     private int moneyCount;
 
@@ -34,8 +34,12 @@ public class EndgameScreen implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, WIDTH, HEIGHT);
 
-        fontGenerator = new FreeTypeFontGenerator
+        fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("font.otf"));
+        fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        fontParameter.size = 30;
+        fontParameter.color = Color.BLACK;
 
+        font = fontGenerator.generateFont(fontParameter);
     }
 
     @Override
