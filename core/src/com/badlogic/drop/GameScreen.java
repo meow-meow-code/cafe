@@ -104,8 +104,7 @@ public class GameScreen implements Screen {
         moneyCount = 0;
         currentCoffee = new CoffeeRecipe(0,0,0);
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Eugusto Free Font.ttf"));
-        FreeTypeFontGenerator.FreeTypeFontParameter parameter =
-                new FreeTypeFontGenerator.FreeTypeFontParameter();
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size = 20;
         parameter.color = Color.BLACK;
         font = generator.generateFont(parameter); // font size 12 pixels
@@ -183,7 +182,6 @@ public class GameScreen implements Screen {
 
         batch.begin();
         font.setColor(Color.BLACK);
-        font.getData().setScale(2);
         font.draw(batch, orderText, 150,425);
         font.draw(batch, (int)secondsLeft + "", 580, 425);
         font.draw(batch, moneyCount + "$", 160,120);
