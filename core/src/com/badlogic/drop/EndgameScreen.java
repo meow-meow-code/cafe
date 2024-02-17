@@ -11,6 +11,11 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.*;
 
+
+import java.awt.Font;
+
+import javax.swing.JLabel;
+
 public class EndgameScreen implements Screen {
 
     private CoffeGame game;
@@ -31,16 +36,19 @@ public class EndgameScreen implements Screen {
         this.moneyCount = moneyCount;
         batch = new SpriteBatch();
 
+        //JLabel label = new JLabel("font.otf");
+        //label.setFont(new Font("font.otf", Font.PLAIN, 24));
+
         camera = new OrthographicCamera();
         camera.setToOrtho(false, WIDTH, HEIGHT);
 
-        fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("font.otf"));
-        fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        fontParameter.size = 30;
-        fontParameter.color = Color.BLACK;
-
-        font = fontGenerator.generateFont(fontParameter);
-        fontGenerator.dispose();
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Eugusto Free Font.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter =
+                new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = 48;
+        parameter.color = Color.BLACK;
+        font = generator.generateFont(parameter); // font size 12 pixels
+        generator.dispose();
     }
 
     @Override
@@ -55,7 +63,7 @@ public class EndgameScreen implements Screen {
         batch.begin();
         camera.update();
         batch.setProjectionMatrix(camera.combined);
-        font.draw(batch, "You earned: "+ moneyCount + "$", 350, 250);
+        font.draw(batch, "You earned: "+ moneyCount + "$", 220, 250);
         batch.end();
     }
 

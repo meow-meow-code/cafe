@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -83,6 +84,7 @@ public class GameScreen implements Screen {
     private HashMap<String, CoffeeRecipe> menuMap;
 
     private CoffeeRecipe currentCoffee;
+    private BitmapFont font;
 
     public GameScreen(CoffeGame game){
         this.game = game;
@@ -92,6 +94,13 @@ public class GameScreen implements Screen {
         secondsLeft = 60;
         moneyCount = 0;
         currentCoffee = new CoffeeRecipe(0,0,0);
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Eugusto Free Font.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter =
+                new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = 20;
+        parameter.color = Color.BLACK;
+        font = generator.generateFont(parameter); // font size 12 pixels
+        generator.dispose();
     }
 
     private void createMenuMap(){
@@ -161,7 +170,6 @@ public class GameScreen implements Screen {
         }
 
         batch.begin();
-        BitmapFont font = new BitmapFont();
         font.setColor(Color.BLACK);
         font.getData().setScale(2);
         font.draw(batch, orderText, 150,425);
