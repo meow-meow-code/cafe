@@ -63,7 +63,7 @@ public class EndgameScreen implements Screen {
         batch.begin();
         camera.update();
         batch.setProjectionMatrix(camera.combined);
-        font.draw(batch, "You earned: "+ moneyCount + "$", 220, 250);
+        font.draw(batch, "You earned: "+ moneyCount + "$", 215, 250);
         batch.end();
     }
 

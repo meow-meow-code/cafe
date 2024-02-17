@@ -86,6 +86,11 @@ public class GameScreen implements Screen {
     private CoffeeRecipe currentCoffee;
     private BitmapFont font;
 
+    private boolean canPressSellButton = true;
+
+    private double sellButtonCooldown = 0.3;
+    private double sellButtonCurrentCooldown;
+
     public GameScreen(CoffeGame game){
         this.game = game;
         create();
@@ -101,6 +106,7 @@ public class GameScreen implements Screen {
         parameter.color = Color.BLACK;
         font = generator.generateFont(parameter); // font size 12 pixels
         generator.dispose();
+        sellButtonCurrentCooldown = sellButtonCooldown;
     }
 
     private void createMenuMap(){
@@ -178,6 +184,13 @@ public class GameScreen implements Screen {
 
         //batch.draw(randomCoffeeTexture, randomCoffeeBounds.x, randomCoffeeBounds.y);
 
+        if(!canPressSellButton){
+            sellButtonCurrentCooldown -= Gdx.graphics.getDeltaTime();
+            if(sellButtonCurrentCooldown <= 0){
+                canPressSellButton = true;
+                sellButtonCurrentCooldown = sellButtonCooldown;
+            }
+        }
 
 
         if (coffeeAnimating) {
@@ -270,10 +283,11 @@ public class GameScreen implements Screen {
                 }
             }
 
-            if (sellButtonBounds.contains(x, y)){
+            if (sellButtonBounds.contains(x, y) && canPressSellButton){
                 if(checkIsOrderRight()){
                     moneyCount += 10;
                 }
+                canPressSellButton = false;
                 currentCoffee = new CoffeeRecipe(0,0,0);
                 orderText = getRandomOrderText();
             }
