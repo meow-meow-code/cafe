@@ -113,6 +113,8 @@ public class GameScreen implements Screen {
         menuMap = new HashMap<>();
         menuMap.put("Latte", new CoffeeRecipe(2, 1, 1));
         menuMap.put("Cappuccino", new CoffeeRecipe(1, 2, 1));
+        menuMap.put("Espresso", new CoffeeRecipe(0, 1, 1));
+        menuMap.put("Swedish", new CoffeeRecipe(2, 1, 4));
     }
 
     private String getRandomOrderText(){
