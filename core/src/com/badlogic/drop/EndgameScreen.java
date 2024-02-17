@@ -40,6 +40,7 @@ public class EndgameScreen implements Screen {
         fontParameter.color = Color.BLACK;
 
         font = fontGenerator.generateFont(fontParameter);
+        fontGenerator.dispose();
     }
 
     @Override
